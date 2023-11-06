@@ -3,6 +3,7 @@ export const OK = 200;
 
 const SUCCESS_CREATED_MESSAGE = "Order placed successfully!";
 const COMMON_ERROR_MESSAGE = "Sorry! Something went wrong!";
+const PRODUCT_NOT_FOUND_MESSAGE = "The product not found";
 
 export const ORDER_SUCCESS = {
     status: SUCCESS_CREATED,
@@ -11,4 +12,9 @@ export const ORDER_SUCCESS = {
 export const ORDER_ERROR = {
     status: OK,
     message: COMMON_ERROR_MESSAGE
+}
+
+export const PRODUCT_NOT_FOUND_ERROR = {
+    status: OK,
+    message: PRODUCT_NOT_FOUND_MESSAGE
 }

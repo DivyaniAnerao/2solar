@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-//import { ProductModule } from './products/products.module'; umpb ulru ygrn vkvf
 import { Products } from './typeorm/products.entity';
 import { Orders } from './typeorm/orders.entity';
 import { ProductsModule } from './products/products.module';

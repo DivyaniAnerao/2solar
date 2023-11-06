@@ -1,3 +1,6 @@
+/* This file contains mock responses required for the testing
+*/
+//Product record from database
 export const productsMock = {
     productId: 1,
     productName: 'solar',
@@ -6,6 +9,8 @@ export const productsMock = {
     stockPercentage: 100,
     mailSentFlag: 0
 }
+
+//Product record from database for out of order condition
 export const productsMockOutofStock = {
   productId: 1,
   productName: 'solar',
@@ -14,6 +19,8 @@ export const productsMockOutofStock = {
   stockPercentage: 100,
   mailSentFlag: 0
 }
+
+//order record in orders table
 export const updatedProductMock = {
   productId:1,
   quantity:1,
@@ -21,6 +28,8 @@ export const updatedProductMock = {
   buyerPhoneNumber:617812920,
   orderedAt : "10/10/2023"
 }
+
+//Input to the makeOrder by post request
 export const inputDataMock ={
   buyerName: "divyani anerao",
   buyerPhoneNumber: 617812920,
