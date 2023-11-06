@@ -26,8 +26,10 @@ export class ProductsController { /* All the required repositories and services 
     async makeOrder(@Body()productOrder : ProductOrderDto) {
         try { // get the product details from the database for given productId
             const products: ProductObject = await this.productsService.getProductById(productOrder.products.productid);
+            if(products == null){
+                return PRODUCT_NOT_FOUND_ERROR;
+            }
             // If the product stock is less than requested return the out of stock response
-            if(Object.keys(products).length == 0){ return PRODUCT_NOT_FOUND_ERROR; }
             if (products.stock < productOrder.products.quantity) {
                 let message:string = products.stock == 0 ? "Sorry! out of stock" : "Sorry! last " + productOrder.products.quantity + " are remaining.";
                 return {status: OK, message}
