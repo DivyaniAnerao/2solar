@@ -21,9 +21,10 @@ export class ProductOrderDto {
     buyerName : string;
     @IsNotEmpty()
     buyerPhoneNumber : number;
+    @ValidateOrderObject('isArray', {message: 'Invalid input! products is array of product objects'})
     @ValidateOrderObject('productid', {message: 'Invalid product id'})
     @ValidateOrderObject('quantity', {message: 'Invalid quantity'})
-    products : Order;
+    products : Order[];
 }
 
 /* This interface specifies the structure of product in the database
@@ -36,3 +37,4 @@ export interface ProductObject {
     stockPercentage: number,
     mailSentFlag: number
 }
+

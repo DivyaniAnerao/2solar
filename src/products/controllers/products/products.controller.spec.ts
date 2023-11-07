@@ -12,8 +12,7 @@ import {Products} from '../../../typeorm/products.entity';
 import {getRepositoryToken} from '@nestjs/typeorm';
 import {MailerService} from '@nestjs-modules/mailer';
 import {Orders} from '../../../typeorm/orders.entity';
-import {productsMock, inputDataMock, productsMockOutofStock} from '../../../../test/mocks';
-import {ORDER_ERROR, OK, ORDER_SUCCESS} from '../../../status'
+import {productsMock, inputDataMock, productsMockOutofStock,errorOrderStatusMock,resultForvalidInputMock, ourOfOrderResponseMock} from '../../../../test/mocks';
 
 describe('ProductsController', () => { // Dependancy declarations
     let controller: ProductsController;
@@ -79,20 +78,17 @@ describe('ProductsController', () => { // Dependancy declarations
         productsService.sendMail = jest.fn().mockReturnValue(1); // Mocking sendMail
         productRepository.update = jest.fn().mockReturnValue({affected: 1}); // Mocking productRepository to update's success
         const result = await controller.makeOrder(inputDataMock); // Making an explicit call to makeOrder for the input
-        expect(result).toEqual(ORDER_SUCCESS); // Check if the execution returns correct expected output
+        expect(result).toEqual(resultForvalidInputMock); // Check if the execution returns correct expected output
     });
 
     /*
     This test case checks if error response is returned for out of stock condition
      */
     it('Should error for out of stock condition', async () => {
-        const status = {
-            status: OK,
-            message: 'Sorry! out of stock'
-        } // Response code out of stock
+            // Response code out of stock
         productRepository.findOne = jest.fn().mockReturnValue(productsMockOutofStock); // Mocking productRepository to return a product details for out of stock condition
         const result = await controller.makeOrder(inputDataMock) // Making an explicit call to makeOrder for the input
-        expect(result).toEqual(status); // Check if the execution returns correct expected output
+        expect(result).toEqual(ourOfOrderResponseMock); // Check if the execution returns correct expected output
     });
 
     /*
@@ -104,7 +100,7 @@ describe('ProductsController', () => { // Dependancy declarations
         productsService.sendMail = jest.fn().mockReturnValue(1); // Mocking to mailSend success
         productRepository.update = jest.fn().mockReturnValue({affected: 1}); // product update success mock
         const result = await controller.makeOrder(inputDataMock); // Making an explicit call to makeOrder for the input
-        expect(result).toEqual(ORDER_ERROR); // Check if the execution returns correct expected output
+        expect(result).toEqual(errorOrderStatusMock); // Check if the execution returns correct expected output
     });
 
 

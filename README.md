@@ -10,10 +10,31 @@ in products.controllers.ts
  {
     "buyerName": "divyani anerao",
     "buyerPhoneNumber": 617812920,
-    "products": {
-        "productid": 1,
-        "quantity": 1
-    }
+    "products": [
+        {
+            "productid": 1,
+            "quantity": 1
+        },
+        {
+            "productid": 2,
+            "quantity": 10
+        }
+    ]
+}
+
+- Example of output of above request
+{
+    "status": 200,
+    "result": [
+        {
+            "productid": 1,
+            "status": "Order added and product stock updated"
+        },
+        {
+            "productid": 2,
+            "status": "Order added and product stock updated"
+        }
+    ]
 }
 
 ## Installation

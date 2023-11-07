@@ -16,15 +16,28 @@ export function ValidateOrderObject(property: string, validationOptions ?:Valida
             options: validationOptions,
             validator: {
                 validate(value : any, args : ValidationArguments) {
-                    if (property == 'productid') {
-                        // If productId is validated
-                        // return true if productId exists on the object
-                        return typeof value === 'object' && value.productid != undefined && value.productid > 0
+                    if (property == 'isArray') {
+                        return Array.isArray(value);
                     }
-                    if (property == 'quantity') {
-                        // If quantity is validated
-                        // return true if quantity exists on the object
-                        return typeof value === 'object' && value.quantity != undefined && value.quantity > 0;
+                    if (Array.isArray(value)) {
+                        if (property == 'productid') { // If productId is validated
+                            let passCount = 0;
+                            value.forEach(element => { // return true if productId exists on the object
+                                if (typeof element === 'object' && element.productid != undefined && element.productid > 0) {
+                                    passCount++;
+                                }
+                            });
+                            return value.length == passCount
+                        }
+                        if (property == 'quantity') { // If quantity is validated
+                            let passCount = 0;
+                            value.forEach(element => { // return true if quantity exists on the object
+                                if (typeof element === 'object' && element.quantity != undefined && element.quantity > 0) {
+                                    passCount++;
+                                }
+                            });
+                            return value.length == passCount
+                        }
                     }
                 }
             }

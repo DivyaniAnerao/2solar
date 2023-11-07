@@ -1,20 +1,7 @@
 const SUCCESS_CREATED = 201;
 export const OK = 200;
 
-const SUCCESS_CREATED_MESSAGE = "Order placed successfully!";
-const COMMON_ERROR_MESSAGE = "Sorry! Something went wrong!";
-const PRODUCT_NOT_FOUND_MESSAGE = "The product not found";
-
-export const ORDER_SUCCESS = {
-    status: SUCCESS_CREATED,
-    message: SUCCESS_CREATED_MESSAGE
-}
-export const ORDER_ERROR = {
-    status: OK,
-    message: COMMON_ERROR_MESSAGE
-}
-
-export const PRODUCT_NOT_FOUND_ERROR = {
-    status: OK,
-    message: PRODUCT_NOT_FOUND_MESSAGE
-}
+export const PRODUCT_NOT_FOUND_MESSAGE = "The product not found";
+export const ORDER_PRODUCT_ADDED = "Order added and product stock updated";
+export const STOCK_NOT_UPDATED = "Product stock was not updated";
+export const ORDER_NOT_ADDED = "Order was not added"

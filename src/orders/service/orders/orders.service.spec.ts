@@ -50,7 +50,7 @@ describe('OrdersService', () => {
         }
         orderRepository.save = jest.fn().mockReturnValue(orderDto); // Mockn the orderRepository response
         const result = await service.addNewOrder(1, 1, 'divyani anerao', 9876543212); // Make explicit call to addNewOrder service with required parameters to add new order
-        expect(0).toEqual(0); // The expected output is 0 because the mocking timestamp and output timestamp of orderedAt will never be same
+        expect(result).toEqual(0); // The expected output is 0 because the mocking timestamp and output timestamp of orderedAt will never be same
     });
 
 });

@@ -10,7 +10,6 @@ import {ConfigService} from '@nestjs/config';
 import {Repository} from 'typeorm';
 import {Products} from '../../../typeorm/products.entity';
 import {MailerService} from '@nestjs-modules/mailer';
-import {ORDER_SUCCESS} from '../../../status'
 
 describe('ProductsService', () => {
     let service: ProductsService;
@@ -65,7 +64,7 @@ describe('ProductsService', () => {
         productRepository.update = jest.fn().mockReturnValue({affected: 1}); // Mocking update function in productRepository
         const result = await service.updateProductStock(1, 0, 0, 0); // Making an explicit call to product service's updateProductStock
         expect(service.sendMail).toHaveBeenCalledTimes(1); // Checking if the sendMail was called at 1 time
-        expect(result).toEqual(ORDER_SUCCESS); // Checking if the execution returns expected output
+        expect(result).toEqual(1); // Checking if the execution returns expected output
     });
 
     /*
@@ -77,8 +76,6 @@ describe('ProductsService', () => {
         productRepository.update = jest.fn().mockReturnValue({affected: 1}); // Mocking update function in productRepository
         const result = await service.updateProductStock(1, 0, 0, 1); // Making an explicit call to product service's updateProductStock
         expect(service.sendMail).toHaveBeenCalledTimes(0); // Checking if the sendMail was called at 0 time
-        expect(result).toEqual(ORDER_SUCCESS); // Checking if the execution returns expected output
+        expect(result).toEqual(1); // Checking if the execution returns expected output
     });
-
-
 });
